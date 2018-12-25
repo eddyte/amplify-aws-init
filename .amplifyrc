@@ -1,0 +1,14 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "restaurantapp-20181224140743-authRole",
+            "UnauthRoleArn": "arn:aws:iam::435471584036:role/restaurantapp-20181224140743-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::435471584036:role/restaurantapp-20181224140743-authRole",
+            "Region": "eu-central-1",
+            "DeploymentBucketName": "restaurantapp-20181224140743-deployment",
+            "UnauthRoleName": "restaurantapp-20181224140743-unauthRole",
+            "StackName": "restaurantapp-20181224140743",
+            "StackId": "arn:aws:cloudformation:eu-central-1:435471584036:stack/restaurantapp-20181224140743/e6d049e0-077c-11e9-8105-061d64a5b024"
+        }
+    }
+}

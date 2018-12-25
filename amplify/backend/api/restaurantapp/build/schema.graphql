@@ -1,0 +1,112 @@
+type Restaurant {
+  id: ID!
+  name: String!
+  description: String
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelRestaurantConnection {
+  items: [Restaurant]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelRestaurantFilterInput {
+  id: ModelIDFilterInput
+  name: ModelStringFilterInput
+  description: ModelStringFilterInput
+  and: [ModelRestaurantFilterInput]
+  or: [ModelRestaurantFilterInput]
+  not: ModelRestaurantFilterInput
+}
+
+type Query {
+  getRestaurant(id: ID!): Restaurant
+  listRestaurants(filter: ModelRestaurantFilterInput, limit: Int, nextToken: String): ModelRestaurantConnection
+}
+
+input CreateRestaurantInput {
+  id: ID
+  name: String!
+  description: String
+}
+
+input UpdateRestaurantInput {
+  id: ID!
+  name: String
+  description: String
+}
+
+input DeleteRestaurantInput {
+  id: ID
+}
+
+type Mutation {
+  createRestaurant(input: CreateRestaurantInput!): Restaurant
+  updateRestaurant(input: UpdateRestaurantInput!): Restaurant
+  deleteRestaurant(input: DeleteRestaurantInput!): Restaurant
+}
+
+type Subscription {
+  onCreateRestaurant: Restaurant @aws_subscribe(mutations: ["createRestaurant"])
+  onUpdateRestaurant: Restaurant @aws_subscribe(mutations: ["updateRestaurant"])
+  onDeleteRestaurant: Restaurant @aws_subscribe(mutations: ["deleteRestaurant"])
+}
